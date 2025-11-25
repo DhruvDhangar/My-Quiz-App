@@ -284,12 +284,6 @@ npm run lint     # Run ESLint
 
 ---
 
-## 📧 Contact
-
-For any questions or issues, please contact: [your.email@example.com]
-
----
-
 ## 📄 License
 
 This project is created as part of a front-end development assignment.
