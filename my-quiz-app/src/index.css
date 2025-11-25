@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* font-face (if not already included) */
+@font-face {
+  font-family: 'Borel-Regular';
+  src: url('/fonts/Borel-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Figma-sourced tokens & shared variables --- */
+:root{
+  /* Background gradient stops (Figma) */
+  --g1: #BECFEE;
+  --g2: #71C6E2;
+  --g3: #D9F4FA;
+  --g4: #BECFEE;
+
+  /* heavy blur amount from Figma */
+  --bg-blur: 200px;
+
+  /* Container (inner white card) */
+  --container-radius: 28px;
+  --container-padding: 48px;
+
+  /* Main / inner frame sizing (from Figma values you provided) */
+  --main-width: 1625px;
+  --main-radius: 50px;
+  --inner-width: 1542px;
+  --inner-radius: 42px;
+
+  /* title */
+  --title-size: 90px;
+  --title-line-height: 24px;
+
+  /* progress segments */
+  --segment-width: 214px;
+  --segment-gap: 32px;
+
+  /* question / option widths */
+  --question-w: 896px;
+  --option-w: 897px;
+  --option-gap: 14px;
+
+}
+
+/* ---------- Page background / aurora blur ---------- */
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Borel-Regular", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, var(--g1) 0%, var(--g2) 35%, var(--g3) 70%, var(--g4) 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+/* ---------- Title styles ---------- */
+.quiz-title {
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #0f4b5a;
+}
+
+/* If using DM Serif Display for the big title, import in index.html or use fallback */
+.result-title {
+  font-family: "DM Serif Display", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1;
+  background: linear-gradient(180deg,#15313D 0%,#3CABDA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Progress segments (Group 1) ---------- */
+.progress-segments {
+  display: flex;
+  justify-content: center;
+  gap: var(--segment-gap);
+}
+.progress-segments .segment {
+  height: 6px;
+  border-radius: 999px;
+  width: var(--segment-width);
+  background: #e8eef2;
+}
+.progress-segments .segment.active { background: #0b3f49; }
+.progress-segments .segment.filled { background: #bfeaf0; }
+
+
+.start-btn {
+  display: inline-block;
+  background: linear-gradient(180deg, #EAF8FD, #DEF3F9);
+  border-radius: 8px;
+  padding: 10px 20px;
+  border: 1px solid rgba(15,118,110,0.12);
+  color: #06383b;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+  cursor: pointer;
+}
+.start-btn:hover { transform: translateY(-2px); transition: all .12s ease; }
+
+/* Utility shadow used across components */
+.shadow-soft { box-shadow: 0 18px 40px rgba(12,22,36,0.06); }
+
+/* ===== RESULT PAGE CLEAN CENTERED LAYOUT ===== */
+
+/* Fullscreen center container */
+.result-center-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical center */
+  align-items: center;       /* horizontal center */
+  text-align: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background: transparent;   /* NO WHITE BOX */
+}
+
+/* Pill */
+.pill-small {
+  display: inline-block;
+  background: rgba(255,255,255,0.95);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  box-shadow: 0 6px 16px rgba(15,118,110,0.04);
+}
+
+/* Title (gradient text) */
+.result-title {
+  font-family: "DM Serif Display", serif;
+  font-size: 48px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+  background: linear-gradient(180deg,#15313D 0%,#3CABDA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+/* Percentage */
+.result-percent {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+
+.result-percent .number {
+  font-family: "DM Serif Display", serif;
+  font-size: 130px;
+  font-weight: 700;
+  color: #0b3f49;
+  line-height: 1;
+}
+
+.result-percent .percent {
+  font-family: "DM Serif Display", serif;
+  font-size: 60px;
+  font-weight: 600;
+  color: #0b3f49;
+  line-height: 1;
+}
+
+/* Start Again button */
+.start-btn {
+  display: inline-block;
+  background: linear-gradient(180deg, #EAF8FD, #DEF3F9);
+  border-radius: 10px;
+  padding: 12px 32px;
+  border: 1px solid rgba(15,118,110,0.15);
+  color: #06383b;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+  cursor: pointer;
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+  transition: all 0.15s ease;
+}
+
+
+
+
+
